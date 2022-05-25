@@ -1,0 +1,44 @@
+{
+    "name": "07-web-ts",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "start": "tsc --watch",
+        "start:build": "node ./dist/index.js",
+        "test": "jest --watchAll --coverage"
+    },
+    "keywords": [],
+    "author": "Alejandro Cerezo",
+    "license": "ISC",
+    "prettier": {
+        "singleQuote": true
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.17.12",
+        "@types/jest": "^27.5.1",
+        "@typescript-eslint/eslint-plugin": "^5.25.0",
+        "@typescript-eslint/parser": "^5.25.0",
+        "eslint": "^8.15.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "jest": "^28.1.0",
+        "typescript": "^4.6.4"
+    },
+    "babel": {
+        "env": {
+            "test": {
+                "plugins": [
+                    "@babel/plugin-transform-modules-commonjs"
+                ]
+            }
+        }
+    },
+    "jest": {
+        "roots": [
+            "<rootDir>/dist/"
+        ]
+    }
+}
