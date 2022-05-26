@@ -1,5 +1,5 @@
 import { TASKS } from '../models/data.js';
-import { AddTask } from './addTask.js';
+import { AddTask } from './add-task.js';
 import { Component } from './component.js';
 export class TodoList extends Component {
     selector;
