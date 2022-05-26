@@ -40,5 +40,9 @@
         "roots": [
             "<rootDir>/dist/"
         ]
+    },
+    "dependencies": {
+        "@types/uuid4": "^2.0.0",
+        "uuid4": "^2.0.2"
     }
 }
