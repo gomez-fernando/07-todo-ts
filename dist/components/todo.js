@@ -42,8 +42,8 @@ export class TodoList extends Component {
         this.template = this.createTemplate();
         this.render(this.selector);
         this.manageComponent();
-        new AddTask('slot.addTask', this.addTask.bind(this));
         console.log(this.tasks);
+        new AddTask('slot.addTask', this.addTask.bind(this));
     }
     handlerButton(ev) {
         const deletedId = ev.target.dataset.id;
@@ -61,8 +61,8 @@ export class TodoList extends Component {
         this.updateComponent();
     }
     addTask(task) {
-        this.tasks = [...this.tasks, task];
+        // this.tasks = [...this.tasks, task];
+        this.tasks.push(task);
         this.updateComponent();
-        console.log('Guardado', this.tasks);
     }
 }

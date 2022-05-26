@@ -14,8 +14,8 @@ export class AddTask extends Component implements iComponent {
         return `
         <h3>Añadir tarea</> 
         <form action="">
-            <input type="text" name="name" id="name" required
-            placeholder="describe la tarea">
+            <input type="text" name="name" id="name"
+            placeholder="describe la tarea" required>
             <input type="text" name="responsible" 
             placeholder="responsable de la tarea"
             id="responsible">
@@ -33,10 +33,7 @@ export class AddTask extends Component implements iComponent {
         ev.preventDefault();
 
         document.querySelectorAll('form input').forEach((item, i) => {
-            const field: string = (<HTMLFormElement>item).name;
-            if (typeof (<HTMLFormElement>item).value === 'string') {
-                data[i] = (<HTMLFormElement>item).value;
-            }
+            data[i] = (<HTMLFormElement>item).value;
         });
         this.add(new TaskModel(...data));
     }

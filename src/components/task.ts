@@ -10,8 +10,7 @@ export class ItemTask extends Component implements iComponent {
         this.render(selector);
     }
     createTemplate() {
-        return `
-        <li>
+        return `<li>
             <span><input type="checkbox" 
             data-id="${this.item.id}"
             ${this.item.isComplete && 'checked'}></span>
@@ -20,7 +19,6 @@ export class ItemTask extends Component implements iComponent {
             <span>${this.item.responsible}<span>
             <span class="button" role="button" 
             data-id="${this.item.id}">🗑️</span>
-        </li>
-        `;
+            </li>`;
     }
 }

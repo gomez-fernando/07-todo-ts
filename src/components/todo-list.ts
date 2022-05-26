@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { iComponent } from '../interfaces/component.js';
-import { TASKS } from '../models/data.js';
 import { TaskModel } from '../models/task.js';
+// import * as store from '../services/store.js';
+import { StoreClass } from '../services/store.class.js';
 import { AddTask } from './add-task.js';
 import { Component } from './component.js';
 import { ItemTask } from './task.js';
@@ -10,8 +11,8 @@ export class TodoList extends Component implements iComponent {
     tasks: Array<TaskModel>;
     constructor(public selector: string) {
         super();
-        this.tasks = TASKS;
-        this.updateComponent()
+        this.tasks = new StoreClass().getTasks();
+        this.updateComponent();
     }
     createTemplate() {
         let html = `
@@ -36,18 +37,18 @@ export class TodoList extends Component implements iComponent {
                 item.addEventListener('change', this.handlerChange.bind(this))
             );
     }
-    private updateComponent(){
+    private updateComponent() {
         this.template = this.createTemplate();
         this.render(this.selector);
         this.manageComponent();
+        new StoreClass().setTasks(this.tasks);
         new AddTask('slot.addTask', this.addTask.bind(this));
-        console.log(this.tasks);
     }
     private handlerButton(ev: Event) {
         const deletedId = (<HTMLElement>ev.target).dataset.id;
         console.log('click', deletedId);
         this.tasks = this.tasks.filter((item) => item.id !== deletedId);
-        this.updateComponent()
+        this.updateComponent();
     }
 
     private handlerChange(ev: Event) {
@@ -60,10 +61,10 @@ export class TodoList extends Component implements iComponent {
         }));
         this.updateComponent();
     }
-    public addTask(task: TaskModel){
-        this.tasks = [...this.tasks, task];
+
+    public addTask(task: TaskModel) {
+        // this.tasks = [...this.tasks, task];
+        this.tasks.push(task);
         this.updateComponent();
-        console.log('Guardado', this.tasks);
-       
     }
 }

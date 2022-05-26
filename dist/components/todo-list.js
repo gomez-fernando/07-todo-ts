@@ -1,4 +1,5 @@
-import { TASKS } from '../models/data.js';
+// import * as store from '../services/store.js';
+import { StoreClass } from '../services/store.class.js';
 import { AddTask } from './add-task.js';
 import { Component } from './component.js';
 import { ItemTask } from './task.js';
@@ -8,7 +9,7 @@ export class TodoList extends Component {
     constructor(selector) {
         super();
         this.selector = selector;
-        this.tasks = TASKS;
+        this.tasks = new StoreClass().getTasks();
         this.updateComponent();
     }
     createTemplate() {
@@ -34,8 +35,8 @@ export class TodoList extends Component {
         this.template = this.createTemplate();
         this.render(this.selector);
         this.manageComponent();
+        new StoreClass().setTasks(this.tasks);
         new AddTask('slot.addTask', this.addTask.bind(this));
-        console.log(this.tasks);
     }
     handlerButton(ev) {
         const deletedId = ev.target.dataset.id;
@@ -53,8 +54,8 @@ export class TodoList extends Component {
         this.updateComponent();
     }
     addTask(task) {
-        this.tasks = [...this.tasks, task];
+        // this.tasks = [...this.tasks, task];
+        this.tasks.push(task);
         this.updateComponent();
-        console.log('Guardado', this.tasks);
     }
 }

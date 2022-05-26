@@ -13,8 +13,8 @@ export class AddTask extends Component {
         return `
         <h3>Añadir tarea</> 
         <form action="">
-            <input type="text" name="name" id="name" required
-            placeholder="describe la tarea">
+            <input type="text" name="name" id="name"
+            placeholder="describe la tarea" required>
             <input type="text" name="responsible" 
             placeholder="responsable de la tarea"
             id="responsible">
@@ -31,10 +31,7 @@ export class AddTask extends Component {
         let data = ['', ''];
         ev.preventDefault();
         document.querySelectorAll('form input').forEach((item, i) => {
-            const field = item.name;
-            if (typeof item.value === 'string') {
-                data[i] = item.value;
-            }
+            data[i] = item.value;
         });
         this.add(new TaskModel(...data));
     }
