@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { iComponent } from '../interfaces/component.js';
-import { Task } from '../models/task.js';
+import { TaskModel } from '../models/task.js';
 import { Component } from './component.js';
 
 export class AddTask extends Component implements iComponent {
@@ -38,6 +38,6 @@ export class AddTask extends Component implements iComponent {
                 data[i] = (<HTMLFormElement>item).value;
             }
         });
-        this.add(new Task(...data));
+        this.add(new TaskModel(...data));
     }
 }

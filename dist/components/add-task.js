@@ -1,4 +1,4 @@
-import { Task } from '../models/task.js';
+import { TaskModel } from '../models/task.js';
 import { Component } from './component.js';
 export class AddTask extends Component {
     add;
@@ -36,6 +36,6 @@ export class AddTask extends Component {
                 data[i] = item.value;
             }
         });
-        this.add(new Task(...data));
+        this.add(new TaskModel(...data));
     }
 }

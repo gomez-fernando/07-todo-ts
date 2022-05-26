@@ -10,7 +10,7 @@
 
 // (false);implements iTask
 
-export class Task {
+export class TaskModel {
     static generateId(): string {
         // error
         // return uuid();
@@ -19,7 +19,7 @@ export class Task {
     id: string;
     isComplete: boolean;
     constructor(public name: string, public responsible: string) {
-        this.id = Task.generateId();
+        this.id = TaskModel.generateId();
         this.isComplete = false;
     }
 }

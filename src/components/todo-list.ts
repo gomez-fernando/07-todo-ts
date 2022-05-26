@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { iComponent } from '../interfaces/component.js';
 import { TASKS } from '../models/data.js';
-import { Task } from '../models/task.js';
+import { TaskModel } from '../models/task.js';
 import { AddTask } from './add-task.js';
 import { Component } from './component.js';
+import { ItemTask } from './task.js';
 
 export class TodoList extends Component implements iComponent {
-    tasks: Array<Task>;
+    tasks: Array<TaskModel>;
     constructor(public selector: string) {
         super();
         this.tasks = TASKS;
@@ -18,16 +19,7 @@ export class TodoList extends Component implements iComponent {
         <slot class="addTask"></slot>
         <ul class="task-list">`;
         this.tasks.forEach((item) => {
-            html += `<li>
-            <span><input type="checkbox" 
-            data-id="${item.id}"
-            ${item.isComplete && 'checked'}></span>
-            <span>${item.name}</span>
-            <span> - </span> 
-            <span>${item.responsible}<span>
-            <span class="button" role="button" 
-            data-id="${item.id}">🗑️</span>
-            </li>`;
+            html += new ItemTask('', item).template;
         });
         html += `</ul>`;
         return html;
@@ -68,7 +60,7 @@ export class TodoList extends Component implements iComponent {
         }));
         this.updateComponent();
     }
-    public addTask(task: Task){
+    public addTask(task: TaskModel){
         this.tasks = [...this.tasks, task];
         this.updateComponent();
         console.log('Guardado', this.tasks);

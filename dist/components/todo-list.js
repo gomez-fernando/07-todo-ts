@@ -1,6 +1,7 @@
 import { TASKS } from '../models/data.js';
 import { AddTask } from './add-task.js';
 import { Component } from './component.js';
+import { ItemTask } from './task.js';
 export class TodoList extends Component {
     selector;
     tasks;
@@ -16,16 +17,7 @@ export class TodoList extends Component {
         <slot class="addTask"></slot>
         <ul class="task-list">`;
         this.tasks.forEach((item) => {
-            html += `<li>
-            <span><input type="checkbox" 
-            data-id="${item.id}"
-            ${item.isComplete && 'checked'}></span>
-            <span>${item.name}</span>
-            <span> - </span> 
-            <span>${item.responsible}<span>
-            <span class="button" role="button" 
-            data-id="${item.id}">🗑️</span>
-            </li>`;
+            html += new ItemTask('', item).template;
         });
         html += `</ul>`;
         return html;
