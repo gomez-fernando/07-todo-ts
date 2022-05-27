@@ -1,0 +1,51 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "hacer front",
+      "reponsible": "fernando",
+      "isComplete": "false"
+    },
+    {
+      "name": "sdsd",
+      "responsible": "",
+      "id": "3220033",
+      "isComplete": true
+    },
+    {
+      "name": "32424",
+      "responsible": "",
+      "id": "8216302",
+      "isComplete": true
+    },
+    {
+      "name": "2432ewr",
+      "responsible": "",
+      "id": "7201865",
+      "isComplete": true
+    },
+    {
+      "name": "opop",
+      "responsible": "",
+      "id": "744383",
+      "isComplete": false
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
